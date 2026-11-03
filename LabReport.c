@@ -50,5 +50,37 @@ int enter_song_data(void) {
 
 int main(void)
 {
-    enter_song_data(); // call the function to enter n songs
+    printf("Welcome to the Song Catalogue Program!\n");
+    printf("Your options are:\n");
+    printf("1. Enter song data\n");
+    printf("2. Save data to file\n");
+    printf("3. Read data from file\n");
+    printf("4. Display catalogue\n");
+    printf("5. Exit\n");
+    printf("Enter your choice now: ");
+
+    // varibale for option choice
+    int display_choice;
+
+    // ask for option
+    printf("Enter choice number: ");
+    if (scanf("%i", &display_choice) != 1) { // Validate input
+        printf("Invalid input. Please enter a number.\n");
+         return 0;
+    }
+
+    // if statements to call the correct function based on the option chosen
+    if (display_choice == 1) {
+        enter_song_data(); // call the function to enter n songs
+    } else if (display_choice == 2) {
+        save_data_to_file(); // call the function to save the data to a file
+    } else if (display_choice == 3) {
+        read_data_from_file(); // call the function to read the data from a file
+    } else if (display_choice == 4) {
+        catalogue(); // call the function to display the catalogue
+    } else if (display_choice == 5) {
+        exit(0); // exit the program
+    } else {
+        printf("Invalid choice. Please try again.\n");
+    }
 };

@@ -1,6 +1,7 @@
 #include <stdio.h>
+#define MAX 100
 
-// create an empty array with our 4 catagories; Name of band, name of song, price, release year
+// create a structure with our 4 catagories; Name of band, name of song, price, release year
 struct cg {
     char band_name;
     char song_name;
@@ -8,6 +9,8 @@ struct cg {
     int year;
 };
 
+// turn out structure into an array
+struct cg song_catalogue[MAX];
 
 
 int main() {
@@ -25,13 +28,32 @@ int main() {
 
 int enter_data() {
     // ask for user input
-    // add data to array
+    printf("Please enter the band/singer, song name, price and year of release (e.g. Beatles, Hey Jude, 1.99, 1968): ");
+    int i =  sizeof(song_catalogue) / sizeof(song_catalogue[0]);
+    // take the input and put it into the array
+    scanf("%c %c %f %d", 
+        &song_catalogue[i].band_name,
+        &song_catalogue[i].song_name,
+        &song_catalogue[i].price,
+        &song_catalogue[i].year);
 };
 
 
 
 int save_data() {
     // send all data in the array to file
+    FILE *fp = fopen("song_catalogue.txt", "a");
+
+    // for length of array, print each element to file
+    for (int i = 0; i < sizeof(song_catalogue) / sizeof(song_catalogue[0]); i++) {
+        fprintf(fp, "%c %c %f %d\n", 
+            song_catalogue[i].band_name,
+            song_catalogue[i].song_name,
+            song_catalogue[i].price,
+            song_catalogue[i].year);
+    }
+
+    fclose(fp);
 };
 
 

@@ -60,11 +60,38 @@ int save_data() {
 
 int read_data() {
     // read data from file to array
+    FILE *fp = fopen("song_catalogue.txt", "r");
+
+    int count = 0;
+    while (fscanf(fp, "%c %c %f %d",
+        &song_catalogue[count].band_name,
+        &song_catalogue[count].song_name,
+        &song_catalogue[count].price,
+        &song_catalogue[count].year) == 4) {
+        count++;
+    }
+
+    fclose(fp);
 };
 
 
 
 int display_catalogue() {
     // organise array into Year of Release: Newer to Older
+    int count = sizeof(song_catalogue) / sizeof(song_catalogue[0]);
+    for (int i = 0; i < count - 1; i++)
+    {
+        for (int j = 0; j < count - i - 1; j++)
+        {
+            if (song_catalogue[j].year < song_catalogue[j + 1].year)
+            {
+                struct cg temp = song_catalogue[j];
+                song_catalogue[j] = song_catalogue[j + 1];
+                song_catalogue[j + 1] = temp;
+            }
+        }
+    }
+
     // print out array for user
+    
 };

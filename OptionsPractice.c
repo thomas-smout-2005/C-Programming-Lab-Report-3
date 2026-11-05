@@ -15,13 +15,45 @@ struct cg song_catalogue[MAX];
 
 int main() {
     // open loop
-    // options from 1 to 5
-    // (1) Enter Data Function
-    // (2) Send Data to File Function
-    // (3) Read Data from File Function
-    // (4) Print out the Catalogue to Screen Function
-    // (5) Exit Program (end loop)
-    // Enter your choice now (e.g. 4): 
+    if (1) {
+        // print out the options for the user
+        printf("Welcome to the Song Catalogue Program!\n");
+        printf("Your options are:\n");
+        printf("1. Enter song data\n");
+        printf("2. Save data to file\n");
+        printf("3. Read data from file\n");
+        printf("4. Display catalogue\n");
+        printf("5. Exit\n");
+        printf("Enter your choice now: ");
+    }
+
+    // variable to hold the user input
+    int choice;
+
+    // ask for option printf("Enter choice number: ");
+    if (scanf("%i", &choice) != 1) {
+        // Validate input
+        printf("Invalid input. Please enter a number. \n");
+        return 0;
+    }
+
+    // if statements to call the correct function based on the option chosen
+    if (choice==1) {
+        enter_song_data(); // call the function to enter n songs
+    }
+    elseif (choice==2) {
+        save_data_to_file(); // call the function to save the data to a file
+    }
+    else if (choice==3) {
+        read_data_from_file(); // call the function to read the data from a file
+    }
+    else if (choice==4) {
+        catalogue(); // call the function to display the catalogue
+    } else if (choice==5) {
+        exit(0); // exit the program
+    else {
+        printf("Invalid choice. Please try again.\n");
+    }
 };
 
 
@@ -93,5 +125,12 @@ int display_catalogue() {
     }
 
     // print out array for user
-    
+    printf("Catalogue:\n");
+    for (int i = 0; i < count; i++) {
+        printf("%c %c %f %d\n",
+            song_catalogue[i].band_name,
+            song_catalogue[i].song_name,
+            song_catalogue[i].price,
+            song_catalogue[i].year);
+    }
 };

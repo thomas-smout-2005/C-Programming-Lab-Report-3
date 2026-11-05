@@ -3,7 +3,7 @@
 
 // structure to hold band singer, song, price and year of release
 struct cg {
-    char band_singer;
+    char band_name;
     char song_name;
     float price;
     int year;
@@ -35,7 +35,7 @@ int enter_song_data(void) {
     // if statment prevents incorrect inputs
     // each input is put directly into the array
     if(scanf("%c %c %f %d", 
-        &song_catalogue[i].band_singer,
+        &song_catalogue[i].band_name,
         &song_catalogue[i].song_name,
         &song_catalogue[i].price,
         &song_catalogue[i].year) != 4) {

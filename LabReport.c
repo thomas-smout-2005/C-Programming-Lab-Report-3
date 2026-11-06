@@ -28,6 +28,7 @@ int main(void) {
     // open loop
     while (1) {
         // print out the options for the user
+        printf("_______________________________\n");
         printf("Welcome to the Song Catalogue Program!\n");
         printf("Your options are:\n");
         printf("1. Enter song data\n");
@@ -35,6 +36,7 @@ int main(void) {
         printf("3. Read data from file\n");
         printf("4. Display catalogue\n");
         printf("5. Exit\n");
+        printf("_______________________________\n");
         printf("Enter your choice now: ");
 
         // variable to hold the user input
@@ -43,6 +45,7 @@ int main(void) {
         // ask for option printf("Enter choice number: ");
         if (scanf("%i", &choice) != 1) {
             // Validate input
+            printf("_______________________________\n");
             printf("Invalid input. Please enter a number. \n");
         }
 
@@ -63,9 +66,9 @@ int main(void) {
             break;
         }
         else {
+            printf("_______________________________\n");
             printf("Invalid choice. Please try again.\n");
         }
-        return 0; // return 0 to indicate successful completion of the program
     }
     return 0; // return 0 to indicate successful completion of the program
 }
@@ -75,11 +78,13 @@ int main(void) {
 void enter_data(void) {
     
     if (count >= MAX) {
+        printf("_______________________________\n");
         printf("Catalogue is full. Cannot add more songs.\n");
         return;
     }
     
     // ask for user input
+    printf("_______________________________\n");
     printf("Please enter the band/singer, song name, price and year of release (e.g. Beatles, HeyJude, 1.99, 1968): ");
     // take the input and put it into the array
     scanf("%99s %99s %f %d", 
@@ -97,6 +102,7 @@ void save_data(void) {
     FILE *fp = fopen("song_catalogue.txt", "w");
 
     if (fp == NULL) {
+        printf("_______________________________\n");
         printf("Error opening file.\n");
         return;
     }
@@ -111,6 +117,7 @@ void save_data(void) {
     }
 
     fclose(fp);
+    printf("_______________________________\n");
     printf("Data saved to file successfully.\n");
 }
 
@@ -122,6 +129,7 @@ int read_data(void) {
     FILE *fp = fopen("song_catalogue.txt", "r");
 
     if (fp == NULL) {
+        printf("_______________________________\n");
         printf("Error opening file.\n");
         return 1;
     }
@@ -138,6 +146,7 @@ int read_data(void) {
     count = i; // set count to the number of songs read from the file
 
     fclose(fp);
+    printf("_______________________________\n");
     printf("%d songs loaded.\n", count);
     return 0;
 }
@@ -160,6 +169,7 @@ void display_catalogue(void) {
     }
 
     // print out array for user
+    printf("_______________________________\n");
     printf("Catalogue:\n");
     for (int i = 0; i < count; i++) {
         printf("%s %s %f %d\n",
